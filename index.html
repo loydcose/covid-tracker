@@ -9,14 +9,20 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="./scripts/script.js" defer></script>
   </head>
   <body>
     <dialog class="loading">
       <img src="./images/loading.gif" alt="loading icon" />
     </dialog>
-
     <dialog class="not-found">
       <div class="not-found_title-wrapper">
         <img src="./images/alert.svg" alt="alert icon" />
@@ -25,15 +31,22 @@
       <p>"Country not found or doesn't have any cases"</p>
       <button type="button" onclick="closeModal(this)">Back</button>
     </dialog>
-
     <header>
-      <button type="button" class="header_logo-wrapper" onclick="location.reload()">
+      <button
+        type="button"
+        class="header_logo-wrapper"
+        onclick="location.reload()"
+      >
         <img src="./images/logo.svg" alt="logo" class="purple-filter" />
         <h1>Covid-19 Tracker</h1>
       </button>
-      <button type="button">
-        <img src="./images/github.svg" alt="github logo" class="light-black-filter" />
-      </button>
+      <a href="https://github.com/loydcose/covid-tracker.git">
+        <img
+          src="./images/github.svg"
+          alt="github logo"
+          class="light-black-filter"
+        />
+      </a>
     </header>
     <main>
       <aside class="main_aside-section"></aside>
@@ -41,7 +54,11 @@
         <div class="search-wrapper">
           <input type="text" placeholder="Enter country name" required />
           <button type="button">Search</button>
-          <img src="./images/search.svg" alt="search icon" class="purple-filter" />
+          <img
+            src="./images/search.svg"
+            alt="search icon"
+            class="purple-filter"
+          />
           <ul></ul>
         </div>
         <div class="main_grid-wrapper"></div>
@@ -49,7 +66,7 @@
       <section class="main_table"></section>
     </main>
     <footer>
-      <p>© 2022, Loyd Cose. All rights reserved.</p>
+      <p>2022 DEVELOPED AND DESIGN BY LOYD COSE.</p>
     </footer>
   </body>
 </html>

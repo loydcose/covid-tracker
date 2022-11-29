@@ -34,6 +34,7 @@
 html {
   font-size: 10px;
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 body {
@@ -86,6 +87,28 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1.25rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 100vw;
+  border: .25rem solid #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .purple-filter {
@@ -141,7 +164,7 @@ h6 {
 }
 
 .card p {
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: var(--fs-20);
   color: var(--black);
@@ -270,7 +293,7 @@ body header .header_logo-wrapper h1 {
   color: var(--black);
 }
 
-body header button img {
+body header a img {
   width: 3.3rem;
 }
 
@@ -332,7 +355,7 @@ body main aside .main-card .main-card_content div {
 }
 
 body main aside .main-card .main-card_content div span:nth-child(1) {
-  font-family: 'space mono', sans-serif;
+  font-family: "space mono", sans-serif;
   margin-right: 1rem;
 }
 
@@ -375,30 +398,30 @@ body main .main_section .search-wrapper input {
   padding-block: 1.5rem;
 }
 
-body main .main_section .search-wrapper input[type='text'] {
+body main .main_section .search-wrapper input[type="text"] {
   width: 100%;
   padding-right: 2rem;
   padding-left: 5rem;
   color: var(--black);
 }
 
-body main .main_section .search-wrapper input[type='text']::-webkit-input-placeholder {
+body main .main_section .search-wrapper input[type="text"]::-webkit-input-placeholder {
   color: rgba(100, 116, 139, 0.5);
 }
 
-body main .main_section .search-wrapper input[type='text']:-ms-input-placeholder {
+body main .main_section .search-wrapper input[type="text"]:-ms-input-placeholder {
   color: rgba(100, 116, 139, 0.5);
 }
 
-body main .main_section .search-wrapper input[type='text']::-ms-input-placeholder {
+body main .main_section .search-wrapper input[type="text"]::-ms-input-placeholder {
   color: rgba(100, 116, 139, 0.5);
 }
 
-body main .main_section .search-wrapper input[type='text']::placeholder {
+body main .main_section .search-wrapper input[type="text"]::placeholder {
   color: rgba(100, 116, 139, 0.5);
 }
 
-body main .main_section .search-wrapper input[type='text']:focus {
+body main .main_section .search-wrapper input[type="text"]:focus {
   outline: 0.3rem solid rgba(99, 102, 241, 0.25);
 }
 
@@ -518,7 +541,7 @@ body main .main_table .table_population-wrapper h3 {
 }
 
 body main .main_table .table_population-wrapper p {
-  font-family: 'space mono', sans-serif;
+  font-family: "space mono", sans-serif;
   font-size: var(--fs-31);
   font-weight: 700;
   color: var(--purple);
@@ -566,7 +589,7 @@ body main .main_table .table_grid-wrapper .table_datas .table_cell .cell_label {
 }
 
 body main .main_table .table_grid-wrapper .table_datas .table_cell .cell_number {
-  font-family: 'space mono', sans-serif;
+  font-family: "space mono", sans-serif;
   color: var(--black);
   font-weight: 700;
 }

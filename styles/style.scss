@@ -1,10 +1,12 @@
-@import '_global.scss';
+@import "_global.scss";
 
 .purple-filter {
-  filter: invert(31%) sepia(86%) saturate(6115%) hue-rotate(242deg) brightness(94%) contrast(90%);
+  filter: invert(31%) sepia(86%) saturate(6115%) hue-rotate(242deg)
+    brightness(94%) contrast(90%);
 }
 .light-black-filter {
-  filter: invert(44%) sepia(21%) saturate(430%) hue-rotate(176deg) brightness(96%) contrast(96%);
+  filter: invert(44%) sepia(21%) saturate(430%) hue-rotate(176deg)
+    brightness(96%) contrast(96%);
 }
 .card {
   background-color: var(--white);
@@ -33,7 +35,7 @@
     text-align: left;
   }
   p {
-    font-family: 'Space Mono', monospace;
+    font-family: "Space Mono", monospace;
     font-weight: 700;
     font-size: var(--fs-20);
     color: var(--black);
@@ -82,7 +84,8 @@ body {
       margin-bottom: 1rem;
       img {
         width: 2.7rem;
-        filter: invert(30%) sepia(32%) saturate(2617%) hue-rotate(328deg) brightness(116%) contrast(101%);
+        filter: invert(30%) sepia(32%) saturate(2617%) hue-rotate(328deg)
+          brightness(116%) contrast(101%);
       }
       p {
         font-weight: 700;
@@ -126,7 +129,7 @@ body {
         color: var(--black);
       }
     }
-    button {
+    a {
       img {
         width: 3.3rem;
       }
@@ -171,7 +174,7 @@ body {
             color: var(--light-black);
             text-align: left;
             span:nth-child(1) {
-              font-family: 'space mono', sans-serif;
+              font-family: "space mono", sans-serif;
               margin-right: 1rem;
             }
           }
@@ -204,7 +207,7 @@ body {
         input {
           padding-block: 1.5rem;
         }
-        input[type='text'] {
+        input[type="text"] {
           width: 100%;
           padding-right: 2rem;
           padding-left: 5rem;
@@ -309,7 +312,7 @@ body {
           text-align: center;
         }
         p {
-          font-family: 'space mono', sans-serif;
+          font-family: "space mono", sans-serif;
           font-size: var(--fs-31);
           font-weight: 700;
           color: var(--purple);
@@ -340,7 +343,7 @@ body {
               color: var(--light-black);
             }
             .cell_number {
-              font-family: 'space mono', sans-serif;
+              font-family: "space mono", sans-serif;
               color: var(--black);
               font-weight: 700;
             }

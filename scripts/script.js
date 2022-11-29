@@ -1,244 +1,244 @@
-const table = document.querySelector('.main_table')
-const homePage = document.querySelector('.main_grid-wrapper')
-const searchContainer = document.querySelector('.search-wrapper')
-const mainSection = document.querySelector('.main_section')
+const table = document.querySelector(".main_table")
+const homePage = document.querySelector(".main_grid-wrapper")
+const searchContainer = document.querySelector(".search-wrapper")
+const mainSection = document.querySelector(".main_section")
 const searchInput = searchContainer.firstElementChild
 const searchButton = searchContainer.firstElementChild.nextElementSibling
 const listsContainer = searchContainer.lastElementChild
 let debounceTimeout
-const notFoundModal = document.querySelector('.not-found')
-const loading = document.querySelector('.loading')
+const notFoundModal = document.querySelector(".not-found")
+const loading = document.querySelector(".loading")
 var countries = [
-  'Afghanistan',
-  'Albania',
-  'Algeria',
-  'Andorra',
-  'Angola',
-  'Anguilla',
-  'Antigua & Barbuda',
-  'Argentina',
-  'Armenia',
-  'Aruba',
-  'Australia',
-  'Austria',
-  'Azerbaijan',
-  'Bahamas',
-  'Bahrain',
-  'Bangladesh',
-  'Barbados',
-  'Belarus',
-  'Belgium',
-  'Belize',
-  'Benin',
-  'Bermuda',
-  'Bhutan',
-  'Bolivia',
-  'Bosnia & Herzegovina',
-  'Botswana',
-  'Brazil',
-  'British Virgin Islands',
-  'Brunei',
-  'Bulgaria',
-  'Burkina Faso',
-  'Burundi',
-  'Cambodia',
-  'Cameroon',
-  'Canada',
-  'Cape Verde',
-  'Cayman Islands',
-  'Central Arfrican Republic',
-  'Chad',
-  'Chile',
-  'China',
-  'Colombia',
-  'Congo',
-  'Cook Islands',
-  'Costa Rica',
-  'Cote D Ivoire',
-  'Croatia',
-  'Cuba',
-  'Curacao',
-  'Cyprus',
-  'Czech Republic',
-  'Denmark',
-  'Djibouti',
-  'Dominica',
-  'Dominican Republic',
-  'Ecuador',
-  'Egypt',
-  'El Salvador',
-  'Equatorial Guinea',
-  'Eritrea',
-  'Estonia',
-  'Ethiopia',
-  'Falkland Islands',
-  'Faroe Islands',
-  'Fiji',
-  'Finland',
-  'France',
-  'French Polynesia',
-  'French West Indies',
-  'Gabon',
-  'Gambia',
-  'Georgia',
-  'Germany',
-  'Ghana',
-  'Gibraltar',
-  'Greece',
-  'Greenland',
-  'Grenada',
-  'Guam',
-  'Guatemala',
-  'Guernsey',
-  'Guinea',
-  'Guinea Bissau',
-  'Guyana',
-  'Haiti',
-  'Honduras',
-  'Hong Kong',
-  'Hungary',
-  'Iceland',
-  'India',
-  'Indonesia',
-  'Iran',
-  'Iraq',
-  'Ireland',
-  'Isle of Man',
-  'Israel',
-  'Italy',
-  'Jamaica',
-  'Japan',
-  'Jersey',
-  'Jordan',
-  'Kazakhstan',
-  'Kenya',
-  'Kiribati',
-  'Kosovo',
-  'Kuwait',
-  'Kyrgyzstan',
-  'Laos',
-  'Latvia',
-  'Lebanon',
-  'Lesotho',
-  'Liberia',
-  'Libya',
-  'Liechtenstein',
-  'Lithuania',
-  'Luxembourg',
-  'Macau',
-  'Macedonia',
-  'Madagascar',
-  'Malawi',
-  'Malaysia',
-  'Maldives',
-  'Mali',
-  'Malta',
-  'Marshall Islands',
-  'Mauritania',
-  'Mauritius',
-  'Mexico',
-  'Micronesia',
-  'Moldova',
-  'Monaco',
-  'Mongolia',
-  'Montenegro',
-  'Montserrat',
-  'Morocco',
-  'Mozambique',
-  'Myanmar',
-  'Namibia',
-  'Nauro',
-  'Nepal',
-  'Netherlands',
-  'Netherlands Antilles',
-  'New Caledonia',
-  'New Zealand',
-  'Nicaragua',
-  'Niger',
-  'Nigeria',
-  'North Korea',
-  'Norway',
-  'Oman',
-  'Pakistan',
-  'Palau',
-  'Palestine',
-  'Panama',
-  'Papua New Guinea',
-  'Paraguay',
-  'Peru',
-  'Philippines',
-  'Poland',
-  'Portugal',
-  'Puerto Rico',
-  'Qatar',
-  'Reunion',
-  'Romania',
-  'Russia',
-  'Rwanda',
-  'Saint Pierre & Miquelon',
-  'Samoa',
-  'San Marino',
-  'Sao Tome and Principe',
-  'Saudi Arabia',
-  'Senegal',
-  'Serbia',
-  'Seychelles',
-  'Sierra Leone',
-  'Singapore',
-  'Slovakia',
-  'Slovenia',
-  'Solomon Islands',
-  'Somalia',
-  'South Africa',
-  'South Korea',
-  'South Sudan',
-  'Spain',
-  'Sri Lanka',
-  'St Kitts & Nevis',
-  'St Lucia',
-  'St Vincent',
-  'Sudan',
-  'Suriname',
-  'Swaziland',
-  'Sweden',
-  'Switzerland',
-  'Syria',
-  'Taiwan',
-  'Tajikistan',
-  'Tanzania',
-  'Thailand',
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Anguilla",
+  "Antigua & Barbuda",
+  "Argentina",
+  "Armenia",
+  "Aruba",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bermuda",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia & Herzegovina",
+  "Botswana",
+  "Brazil",
+  "British Virgin Islands",
+  "Brunei",
+  "Bulgaria",
+  "Burkina Faso",
+  "Burundi",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Cape Verde",
+  "Cayman Islands",
+  "Central Arfrican Republic",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Congo",
+  "Cook Islands",
+  "Costa Rica",
+  "Cote D Ivoire",
+  "Croatia",
+  "Cuba",
+  "Curacao",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Ethiopia",
+  "Falkland Islands",
+  "Faroe Islands",
+  "Fiji",
+  "Finland",
+  "France",
+  "French Polynesia",
+  "French West Indies",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Gibraltar",
+  "Greece",
+  "Greenland",
+  "Grenada",
+  "Guam",
+  "Guatemala",
+  "Guernsey",
+  "Guinea",
+  "Guinea Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hong Kong",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland",
+  "Isle of Man",
+  "Israel",
+  "Italy",
+  "Jamaica",
+  "Japan",
+  "Jersey",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Kosovo",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Macau",
+  "Macedonia",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Montserrat",
+  "Morocco",
+  "Mozambique",
+  "Myanmar",
+  "Namibia",
+  "Nauro",
+  "Nepal",
+  "Netherlands",
+  "Netherlands Antilles",
+  "New Caledonia",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "North Korea",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Palestine",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Puerto Rico",
+  "Qatar",
+  "Reunion",
+  "Romania",
+  "Russia",
+  "Rwanda",
+  "Saint Pierre & Miquelon",
+  "Samoa",
+  "San Marino",
+  "Sao Tome and Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Korea",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "St Kitts & Nevis",
+  "St Lucia",
+  "St Vincent",
+  "Sudan",
+  "Suriname",
+  "Swaziland",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
   "Timor L'Este",
-  'Togo',
-  'Tonga',
-  'Trinidad & Tobago',
-  'Tunisia',
-  'Turkey',
-  'Turkmenistan',
-  'Turks & Caicos',
-  'Tuvalu',
-  'Uganda',
-  'Ukraine',
-  'United Arab Emirates',
-  'United Kingdom',
-  'United States of America',
-  'Uruguay',
-  'Uzbekistan',
-  'Vanuatu',
-  'Vatican City',
-  'Venezuela',
-  'Vietnam',
-  'Virgin Islands (US)',
-  'Yemen',
-  'Zambia',
-  'Zimbabwe',
+  "Togo",
+  "Tonga",
+  "Trinidad & Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Turks & Caicos",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States of America",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City",
+  "Venezuela",
+  "Vietnam",
+  "Virgin Islands (US)",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe",
 ]
 let globalData
 let continentsData
 
 // Fetch two api for the homepage. global and continents
 loading.showModal()
-const fetchGlobalData = fetch('https://disease.sh/v3/covid-19/all')
-const fetchContinentsData = fetch('https://disease.sh/v3/covid-19/continents')
+const fetchGlobalData = fetch("https://disease.sh/v3/covid-19/all")
+const fetchContinentsData = fetch("https://disease.sh/v3/covid-19/continents")
 fetchGlobalData
   .then((result) => result.json())
   .then((result) => {
@@ -253,8 +253,8 @@ fetchContinentsData
 
 // output contents to homepage using two api fetched earlier
 function outputDataToHomePage() {
-  const asideSection = document.querySelector('.main_aside-section')
-  const mainGridWrapper = document.querySelector('.main_grid-wrapper')
+  const asideSection = document.querySelector(".main_aside-section")
+  const mainGridWrapper = document.querySelector(".main_grid-wrapper")
   asideSection.innerHTML = `
   <button type="button" class="main-card card" onclick="globalOutputToTable()">
           <div class="card-title">
@@ -293,22 +293,22 @@ function outputDataToHomePage() {
 }
 
 // search scripts, input and button
-searchInput.addEventListener('keyup', (e) => {
+searchInput.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     requestCountry(searchInput.value)
   }
   searchCountry()
 })
-searchButton.addEventListener('click', () => {
+searchButton.addEventListener("click", () => {
   requestCountry(searchInput.value)
 })
 
 // autocomplete searching and debounce concept applied
 function searchCountry() {
   clearTimeout(debounceTimeout)
-  listsContainer.innerHTML = ''
+  listsContainer.innerHTML = ""
   if (!searchInput.value) {
-    listsContainer.classList.remove('show-autocomplete')
+    listsContainer.classList.remove("show-autocomplete")
     return
   }
   debounceTimeout = setTimeout(() => {
@@ -321,23 +321,23 @@ function searchCountry() {
     for (let i = 0; i < search.length; i++) {
       listsContainer.innerHTML += `<li onclick="selectCountry(this)">${search[i]}</li>`
     }
-    listsContainer.classList.add('show-autocomplete')
+    listsContainer.classList.add("show-autocomplete")
   }, 200)
 }
 
 // toggle table, display none and block
 function toggleTable() {
-  searchInput.value = ''
-  listsContainer.innerHTML = ''
-  table.classList.toggle('toggle-table')
-  // homePage.classList.toggle('hide')
-  mainSection.classList.toggle('toggle-table')
+  searchInput.value = ""
+  listsContainer.innerHTML = ""
+  table.classList.toggle("toggle-table")
+  animate(table)
+  mainSection.classList.toggle("toggle-table")
 }
 
 // selected autocomplete list will put to input search
 function selectCountry(list) {
   searchInput.value = list.textContent
-  listsContainer.innerHTML = ''
+  listsContainer.innerHTML = ""
 }
 
 // when global card was clicked
@@ -497,5 +497,19 @@ function openModal() {
 
 function closeModal(thisButton) {
   thisButton.parentElement.close()
-  searchInput.value = ''
+  searchInput.value = ""
+}
+
+function animate(element) {
+  element.classList.add("animate__animated", "animate__fadeInUp")
+  element.addEventListener("animationend", () => {
+    element.classList.remove("animate__animated", "animate__fadeInUp")
+  })
+}
+
+function animateOut(element) {
+  element.classList.add("animate__animated", "animate__fadeOutDown")
+  element.addEventListener("animationend", () => {
+    element.classList.remove("animate__animated", "animate__fadeOutDown")
+  })
 }
